@@ -1,0 +1,48 @@
+{
+  "backlog": {
+    "tareas": [
+      {
+        "titulo": "Cortar el pasto y pasear al perro",
+        "descripcion": "El pasto hay que cortarlo",
+        "fechaLimite": "2022-02-25",
+        "id": "3327d800-5a5a-4b3c-aa2b-fa8bcdd60135",
+        "estado": "pendiente"
+      },
+      {
+        "titulo": "Pasear al perro",
+        "descripcion": "Hay que pasear al perro",
+        "fechaLimite": "3546-02-25",
+        "id": "5d5d8d78-193a-4355-b22e-31988c6c51aa",
+        "estado": "pendiente"
+      },
+      {
+        "titulo": "Caminar 20 minutos",
+        "descripcion": "Hay que caminar",
+        "fechaLimite": "2022-02-20",
+        "id": "f72684bf-dd8e-4239-9a24-cb5da5b7a1f4",
+        "estado": "pendiente"
+      },
+      {
+        "titulo": "Comer una hamburguesita",
+        "descripcion": "Comer una hamburguesita",
+        "fechaLimite": "2028-02-25",
+        "id": "f3d12fa3-88fb-4252-9e62-510a05a32c85",
+        "estado": "pendiente"
+      },
+      {
+        "titulo": "Bailar",
+        "descripcion": "Bailar mucho",
+        "fechaLimite": "2025-03-25",
+        "id": "c044907f-e35f-44c1-8f8b-c912c387c996",
+        "estado": "pendiente"
+      },
+      {
+        "titulo": "Descansar del trabajo",
+        "descripcion": "Trabaje mucho",
+        "fechaLimite": "2021-02-25",
+        "id": "8e885a14-353e-450d-a5f3-580881564d94",
+        "estado": "pendiente"
+      }
+    ]
+  }
+}

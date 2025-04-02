@@ -1,0 +1,118 @@
+/*CONTENEDOR PRINCIPAL*/
+
+.createTaskContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+
+    width: 94%;
+    background-color: #27446E;
+    margin: 20px;
+    padding: 0% 2% 0% 2%;
+    box-sizing: border-box;
+    box-shadow: 3px 7px 8px rgb(104, 104, 104);
+    border-radius: 0.4rem;
+    height: 10vh;
+}
+
+.createTaskContainer button {
+    border-radius: 20px;
+    height: 46px;
+    width: 124px;
+    font-weight: 700;
+    font-size: 12px;
+    color: rgb(238, 238, 238);
+    border-style: none;
+    background-color: #27446E;
+    box-shadow: 5px 5px 15px rgb(107, 107, 107);
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+
+/*PARTE IZQUIERDA - INFO VISUAL*/
+
+.taskInfo {
+    width: 68%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: white;
+}
+
+.taskInfo h3{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+
+
+/*PARTE DERECHA - BOTONES/ICONOS DE ACCION*/
+
+.taskOptions {
+    width: 30%;
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.taskOptions button {
+    border-style: none;
+    
+    width: 80px;
+    height: 36px;
+    background-color: rgb(248, 250, 255, 0.8);
+    border-radius: 12px;
+    color: #27446E;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 5px 5px 15px rgb(0, 0, 0, 0.6);
+}
+.taskOptions button:hover {
+    transform: scale(1.05);
+}
+
+.taskOptions select {
+    outline: none;
+    border-style: none;
+    width: 8vw;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 5px 5px 15px rgb(0, 0, 0, 0.6);
+}
+
+.iconsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+.taskOptions span {
+    border-style: none;
+    
+    background-color: rgb(248, 250, 255, 0.8);
+    border-radius: 10px;
+    padding: 4px;
+    color: #27446E;
+    font-size: 24px;
+    font-weight: 600;
+    box-shadow: 5px 5px 15px rgb(0, 0, 0, 0.6);
+}
+.taskOptions span:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.1s;
+}
