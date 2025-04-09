@@ -1,11 +1,13 @@
 import axios from "axios";
 import { ITarea } from "../types/TypesBacklog/ITarea";
-import { API_URL } from "../utils/constantes";
+
 import { putTareaList } from "../http/tareaList";
+const URL_BACKLOG = import.meta.env.VITE_API_URL_BACKLOG
+
 
 export const getTareaController = async (): Promise < ITarea[] | undefined> => {
     try {
-        const response = await axios.get<{tareas:ITarea[]}>(API_URL)
+        const response = await axios.get<{tareas:ITarea[]}>(URL_BACKLOG)    
         return response.data.tareas
     } catch (error) {
         console.log("Problemas en getTareaController", error);

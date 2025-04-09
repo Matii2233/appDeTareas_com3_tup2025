@@ -3,8 +3,8 @@
     "tareas": [
       {
         "titulo": "Cortar el pasto y pasear al perro",
-        "descripcion": "El pasto hay que cortarlo",
-        "fechaLimite": "2022-02-25",
+        "descripcion": "El pasto hay que cortarlo y todo",
+        "fechaLimite": "2320-02-25",
         "id": "3327d800-5a5a-4b3c-aa2b-fa8bcdd60135",
         "estado": "pendiente"
       },
@@ -25,7 +25,7 @@
       {
         "titulo": "Comer una hamburguesita",
         "descripcion": "Comer una hamburguesita",
-        "fechaLimite": "2028-02-25",
+        "fechaLimite": "5521-06-06",
         "id": "f3d12fa3-88fb-4252-9e62-510a05a32c85",
         "estado": "pendiente"
       },
@@ -41,6 +41,13 @@
         "descripcion": "Trabaje mucho",
         "fechaLimite": "2021-02-25",
         "id": "8e885a14-353e-450d-a5f3-580881564d94",
+        "estado": "pendiente"
+      },
+      {
+        "titulo": "Estoy probando tareas(editado)",
+        "descripcion": "Es una tarea",
+        "fechaLimite": "59554-05-25",
+        "id": "a3168cd3-9d43-4e0c-90f5-144ebc004a16",
         "estado": "pendiente"
       }
     ]

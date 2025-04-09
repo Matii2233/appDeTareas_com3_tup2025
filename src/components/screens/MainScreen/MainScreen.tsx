@@ -1,6 +1,6 @@
 import styles from "./MainScreen.module.css"
-import { Backlog } from '../../ui/Backlog/Backlog'
-import { SprintCard } from "../../ui/SprintCard/SprintCard"
+import { Backlog } from '../Backlog/Backlog'
+import { SprintCard } from "../../ui/Cards/SprintCard/SprintCard"
 import { useState } from "react"
 
 
