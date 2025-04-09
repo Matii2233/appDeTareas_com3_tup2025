@@ -2,6 +2,7 @@ import styles from "./MainScreen.module.css"
 import { Backlog } from '../Backlog/Backlog'
 import { SprintCard } from "../../ui/Cards/SprintCard/SprintCard"
 import { useState } from "react"
+import { Sprints } from "../Sprints/Sprints"
 
 
 export const MainScreen = () => {
@@ -29,7 +30,7 @@ export const MainScreen = () => {
         </div>
 
         <div className={styles.containerContent}>
-            {isBacklog ? <Backlog/> : <h2 style={{marginTop:"20px", marginLeft:"20px"}}>Sprints en proceso...</h2>}
+            {isBacklog ? <Backlog/> : <Sprints/>}
         </div>
       </div>
     </>
