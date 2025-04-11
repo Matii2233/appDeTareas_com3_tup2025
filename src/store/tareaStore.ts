@@ -20,14 +20,14 @@ export const tareaStore = create <ITareaStore>((set) => ({
         const arregloTareas = state.tareas.map((tarea)=>
             tarea.id === tareaEditada.id ? {... tarea, ...tareaEditada}:tarea
     )
-        return {tareas: arregloTareas}   
-}),
-eliminarUnaTarea:(idTarea) => 
-    set((state)=>{
-    const arregloTareas = state.tareas.filter(
-        (tarea)=> tarea.id !== idTarea
-)
+        return {tareas: arregloTareas}
+    }),
+    eliminarUnaTarea:(idTarea) => 
+        set((state)=>{
+        const arregloTareas = state.tareas.filter(
+            (tarea)=> tarea.id !== idTarea
+    )
     return {tareas: arregloTareas}   
-}),
+    }),
     setArrayTareas:(arrayDeTareas) => set(()=> ({tareas:arrayDeTareas})),
 }))

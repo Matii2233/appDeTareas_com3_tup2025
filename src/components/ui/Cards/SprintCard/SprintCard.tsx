@@ -1,17 +1,26 @@
+import { FC } from "react"
 import styles from "./SprintCard.module.css"
+import { ISprint } from "../../../../types/TypesSprints/ISprint"
 
-export const SprintCard = () => {
+type IPropsSprintCard = {
+  sprint: ISprint
+  handleEditar: (sprint: ISprint) => void
+  handleEliminar: (idSprint: string) => void
+}
+
+export const SprintCard: FC<IPropsSprintCard> = ({ sprint, handleEditar, handleEliminar }) => {
+
   return (
     <>
       <div className={styles.containerMain}>
-        <h2>Sprint 1</h2>
-        <p>inicio: 2025-05-12</p>
-        <p>cierre: 2025-05-22</p>
+        <h2>{sprint.nombre}</h2>
+        <p>{sprint.fechaInicio}</p>
+        <p>{sprint.fechaCierre}</p>
 
         <div className={styles.containerIcons}>
             <span className="material-symbols-outlined">visibility</span>
-            <span className="material-symbols-outlined">edit</span>
-            <span className="material-symbols-outlined" style={{color:"#DE2C2C"}}>delete</span> 
+            <span className="material-symbols-outlined" onClick={() => handleEditar(sprint)}>edit</span>
+            <span className="material-symbols-outlined" style={{color:"#DE2C2C"}} onClick={() => handleEliminar(sprint.id!)}>delete</span> 
         </div>
       </div>
     </>

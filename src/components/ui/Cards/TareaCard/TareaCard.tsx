@@ -1,13 +1,20 @@
+import { FC } from 'react'
+import { ITarea } from '../../../../types/TypesBacklog/ITarea'
 import styles from './TareaCard.module.css'
 
-export const TareaCard = () => {
+type ITareaCard = {
+    tarea: ITarea
+}
+
+export const TareaCard: FC<ITareaCard> = ({ tarea }) => {
+
     return (
         <>
             <div className={styles.cardContainer}>
                 <div className={styles.cardInfo}>
-                    <p>Tarea: </p>
-                    <p>Descripcion: </p>
-                    <p>Fecha limite: </p>
+                    <p>Tarea: {tarea.titulo}</p>
+                    <p>Descripcion: {tarea.descripcion}</p>
+                    <p>Fecha limite: {tarea.fechaLimite}</p>
                 </div>
 
                 <div className={styles.enviarCard}>

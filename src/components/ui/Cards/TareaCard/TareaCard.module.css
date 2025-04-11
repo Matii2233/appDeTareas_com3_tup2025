@@ -1,7 +1,7 @@
 .cardContainer {
-    width: 92%;
-    min-height: 30%;
-    max-height: 30%;
+    max-width: 92%;
+    min-height: 160px;
+    max-height: 160px;
     padding: 5% 5% 5% 5%;
     margin: 0% 4% 0% 4%;
     box-sizing: border-box;

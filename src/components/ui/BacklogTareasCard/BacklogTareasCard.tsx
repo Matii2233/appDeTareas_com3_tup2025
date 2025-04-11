@@ -8,6 +8,7 @@ type IBacklogTareasCard = {
     handleOpenModalEditar: (tarea:ITarea) => void
     handleEliminarTarea: (idTarea: string) => void
 }
+
 export const BacklogTareasCard: FC<IBacklogTareasCard> = ({tarea,handleOpenModalEditar,handleEliminarTarea}) => {
     const [openModalVerTarea, setOpenModalVerTarea] = useState(false)
     const handleOpenModalVerTarea = () =>{

@@ -1,7 +1,10 @@
-import { TareaCard } from "../../ui/Cards/TareaCard/TareaCard"
+import { useEffect } from "react"
 import styles from "./Sprints.module.css"
+import { useSprints } from "../../../hooks/useSprints"
+import { sprintStore } from "../../../store/sprintStore"
 
 export const Sprints = () => {
+    
   return (
     <>
         <div className={styles.sprintsContainer}>
@@ -22,7 +25,6 @@ export const Sprints = () => {
 
                     <div className={styles.columnBodyContainer}>
                         <div className={styles.columnBody}>
-                            <TareaCard/>
                             
                         </div>
                     </div>
@@ -47,8 +49,7 @@ export const Sprints = () => {
 
                     <div className={styles.columnBodyContainer}>
                         <div className={styles.columnBody}>
-                            <TareaCard/>
-                            
+
                         </div>
                     </div>
                 </div>
