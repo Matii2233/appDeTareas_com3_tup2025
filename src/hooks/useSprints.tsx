@@ -29,7 +29,6 @@ export const useSprints = () => {
     if (data) {
       agregarArregloSprints(data)
     }
-    console.log(data)
   }
 
   const postSprint = async (sprint: ISprint) => {

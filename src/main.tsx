@@ -7,7 +7,6 @@ import { tareaStore } from './store/tareaStore.ts'
 
 
 createRoot(document.getElementById('root')!).render(
-  
   <BrowserRouter>
     <Provider store={tareaStore}>
       <App/>

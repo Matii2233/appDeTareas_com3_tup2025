@@ -1,10 +1,17 @@
 import { useShallow } from "zustand/shallow"
 import { tareaStore } from "../store/tareaStore"
-import { crearTareaController, editarTareaController, eliminarTareaController, getTareaController } from "../data/tareaController"
+import { crearTareaController, editarTareaController, editarTareaSprintController, eliminarTareaController, eliminarTareaSprintController, getTareaController } from "../data/tareaController"
 import { ITarea } from "../types/TypesBacklog/ITarea"
 import Swal from "sweetalert2"
+import { ISprint } from "../types/TypesSprints/ISprint"
+import { sprintStore } from "../store/sprintStore"
 
 export const useTareas = () => {
+
+    const {sprints, agregarNuevoSprint} = sprintStore(useShallow((state)=>({
+        sprints: state.sprints, agregarNuevoSprint: state.agregarNuevoSprint
+    })))
+
     const {tareas, setArrayTareas, agregarNuevaTarea, eliminarUnaTarea, editarUnaTarea} = tareaStore(useShallow((state)=>({
         tareas:state.tareas,
         setArrayTareas:state.setArrayTareas,
@@ -61,11 +68,49 @@ export const useTareas = () => {
         }
     }
 
+    const deleteTareaSprint = async(idTarea: string, idSprint: string) => {
+        const estadoPrevio = sprints.find((el)=>el.id === idSprint)
+        const confirm = await Swal.fire({
+            title:"¿Estas seguro?",
+            text:"Esta accion no se puede deshacer",
+            icon:"warning",
+            showCancelButton:true,
+            confirmButtonText:"Si, eliminar",
+            cancelButtonText:"Cancelar"
+        })
+
+        if (!confirm.isConfirmed)return;
+        eliminarUnaTarea(idTarea)
+        
+        try {
+            await eliminarTareaSprintController(idTarea, idSprint)
+            Swal.fire("Eliminado","La tarea se elimino correctamente","success")
+        } catch (error) {
+            if (estadoPrevio) agregarNuevoSprint(estadoPrevio)
+            console.log("Algo salio mal al eliminar la tarea: ",error)
+        }
+    }
+
+    const putTareaSprintEditar = async(tareaEditada: ITarea, sprintEditado: ISprint)=> {
+        const estadoPrevio = sprints.find((el)=>el.id === sprintEditado.id)
+        editarUnaTarea(tareaEditada)
+
+        try {
+            await editarTareaSprintController(sprintEditado)
+            Swal.fire("Exito","Tarea actualizada correctamente","success")
+        } catch (error) {
+            if (estadoPrevio) agregarNuevoSprint(estadoPrevio)
+                console.log(error)
+        }
+    }
+
     return {
         getTareas,
         crearTarea,
         putTareaEditar,
         deleteTarea,
+        deleteTareaSprint,
+        putTareaSprintEditar,
         tareas
     }
 }

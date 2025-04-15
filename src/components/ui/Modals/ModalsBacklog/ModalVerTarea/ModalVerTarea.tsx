@@ -1,12 +1,13 @@
 import { FC } from "react"
 import { ITarea } from "../../../../../types/TypesBacklog/ITarea"
 import styles from "./ModalVerTarea.module.css"
+import ReactDOM from "react-dom"
 type IModalVerTarea = {
     tarea: ITarea,
     setOpenModalVerTarea: (state: boolean) => void
 }
 export const ModalVerTarea: FC<IModalVerTarea> = ({tarea, setOpenModalVerTarea}) => {
-    return (
+    return ReactDOM.createPortal(
         <div className={styles.containerModalVerTarea}>
             <div className={styles.containerPopUp}>
                 <div>
@@ -30,6 +31,7 @@ export const ModalVerTarea: FC<IModalVerTarea> = ({tarea, setOpenModalVerTarea})
                     <button onClick={() => setOpenModalVerTarea(false)}>Cerrar</button>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.getElementById("modal-root")!
     )
 }

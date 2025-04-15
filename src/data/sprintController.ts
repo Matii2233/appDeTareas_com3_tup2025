@@ -4,7 +4,6 @@ import { putSprintsList } from "../http/sprintsList"
 const API_URL_SPRINTS = import.meta.env.VITE_API_URL_SPRINTS
 
 export const getSprintsController = async(): Promise<ISprint[] | undefined> => {
-  console.log(API_URL_SPRINTS)
   try {
     const response = await axios.get<{ sprints: ISprint[] }>(API_URL_SPRINTS)
     return response.data.sprints
@@ -67,3 +66,4 @@ export const deleteSprintController = async(idSprintAEliminar: string) => {
     console.log("hubo un error en 'deleteSprintController'", error)
   }
 }
+

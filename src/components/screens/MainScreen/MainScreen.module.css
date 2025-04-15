@@ -2,9 +2,20 @@
     height: 100vh;
     width: 100vw;
     background-color: #D3DCEF;
+    position: absolute;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+}
+
+.headerContainer {
+    width: 100%;
+    height: 60px;
+    background-color: #27446E;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -13,31 +24,31 @@
     height: 100vh;
     width: 100vw;
     background-color: #D3DCEF;
+    position: absolute;
     filter: blur(2px);
 
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .containerSidebar {
     height: 80vh;
     width: 20vw;
     background-color: transparent;
+    position: relative;
+    left: 9%;
+    top: 6%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
 }
-
 .containerSidebar button:hover {
     cursor: pointer;
     background-color: #27446E;
     color: rgb(238, 238, 238);
 }
-
 .containerSidebar button {
     border-radius: 10px;
     height: 5vh;
@@ -48,6 +59,13 @@
     color: #27446E;
     font-weight: 800;
     font-size: 17px;
+}
+.listaSprintsTitle {
+    padding-bottom: 10px;
+    width: 180px;
+    text-align: center;
+    border-bottom: 2px solid #27446E;
+    color: #27446E;
 }
 
 .containerContent {

@@ -5,15 +5,17 @@ import { ModalCrearSprint } from "../../ui/Modals/ModalsSprints/ModalCrearSprint
 import { sprintStore } from "../../../store/sprintStore"
 import { useSprints } from "../../../hooks/useSprints"
 import { ISprint } from "../../../types/TypesSprints/ISprint"
-import { Sprints } from "../Sprints/Sprints"
+import { Outlet, useNavigate } from "react-router-dom"
 
 
 export const MainScreen = () => {
   const [isBacklog, setIsBacklog] = useState(true)
 
-  const [isOpenModal, setIsOpenModal] = useState(false)
+  const [isOpenModal, setIsOpenModal] = useState(false) //Estado para abrir el modal añadir o editar sprint
 
   const { sprints, getSprints, deleteSprint } = useSprints()
+
+  const navigate = useNavigate()
 
   const setSprintActivo = sprintStore((state) => state.setSprintActivo)
 
@@ -22,6 +24,7 @@ export const MainScreen = () => {
   },[])
 
   const handleOpenModalCrear = () => {
+    setSprintActivo(null)
     setIsOpenModal(true)
   }
 
@@ -37,41 +40,52 @@ export const MainScreen = () => {
   const handleEliminarSprint = (idSprint: string) => {
     deleteSprint(idSprint)
   }
+
+  const handleGoToSprint = (sprint: ISprint) => {
+    setIsBacklog(false)
+    setSprintActivo(sprint)
+    navigate('/sprint')
+  }
+
+  const handleGoToBacklog = () => {
+    setIsBacklog(true)
+    setSprintActivo(null)
+    navigate('/backlog')
+  }
   return (
     <>
-      <div className={isOpenModal ? styles.mainContainerBlur : styles.mainContainer}>
+      <div className={styles.mainContainer}>
+        <div className={styles.headerContainer}>
+          <h2>Aplicacion de tareas</h2>
+        </div>
+
         <div className={styles.containerSidebar}>
             <button
-            onClick={() => setIsBacklog(true)}
-            style={isBacklog ? {backgroundColor:"#27446E", color:"white"} : {}}
+              onClick={handleGoToBacklog}
+              style={isBacklog ? { backgroundColor: "#27446E", color: "white" } : {}}
             >
               Backlog
             </button>
 
-            <button
-            onClick={() => setIsBacklog(false)}
-            style={isBacklog ? {} : {backgroundColor:"#27446E", color:"white"}}
-            >
-              Lista Sprints
-            </button>
+            <h2 className={styles.listaSprintsTitle}>Lista Sprints</h2>
 
             {sprints.length > 0
-              ? sprints.map((sprint) => <SprintCard key={sprint.id} sprint={sprint} handleEditar={handleOpenModalEditar} handleEliminar={handleEliminarSprint}/>)
+              ? sprints.map((sprint) =>
+                <SprintCard key={sprint.id} sprint={sprint} handleEditar={handleOpenModalEditar} handleEliminar={handleEliminarSprint} handleGoToSprint={handleGoToSprint} />
+              )
               : <p>No hay sprints creados</p>
             }
 
             <div className={styles.addSprint}>
               <span className="material-symbols-outlined"
-              onClick={handleOpenModalCrear}>add</span>
+                onClick={handleOpenModalCrear}>add</span>
             </div>
-        </div>
-
-        <div className={styles.containerContent}>
-          <Sprints/>
-        </div>
+          </div>
       </div>
 
       {isOpenModal ? <ModalCrearSprint handleCloseModal={handleCloseModalCrear} /> : null}
+
+      <Outlet/>
     </>
   )
 }

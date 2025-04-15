@@ -16,6 +16,11 @@
     align-items: flex-start;
     gap: 8px;
 }
+.containerMain:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: 0.1s;
+}
 
 
 

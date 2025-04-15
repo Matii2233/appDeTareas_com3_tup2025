@@ -1,4 +1,4 @@
-type Estado = "pendiente" | "En proceso" | "Completado"
+type Estado = "Pendiente" | "En proceso" | "Completado"
 
 export interface ITarea{
     id?:string,

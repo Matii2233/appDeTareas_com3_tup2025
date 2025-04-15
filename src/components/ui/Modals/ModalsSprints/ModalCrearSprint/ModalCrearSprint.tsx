@@ -3,6 +3,7 @@ import styles from "./ModalCrearSprint.module.css"
 import { ISprint } from "../../../../../types/TypesSprints/ISprint"
 import { sprintStore } from "../../../../../store/sprintStore"
 import { useSprints } from "../../../../../hooks/useSprints"
+import ReactDOM from "react-dom"
 
 type IPropsModalCrearSprint = {
     handleCloseModal: VoidFunction
@@ -60,26 +61,27 @@ export const ModalCrearSprint: FC<IPropsModalCrearSprint> = ({ handleCloseModal 
         setSprintActivo(null)
     }
 
-  return (
-    <>
-    <form className={styles.modalContainer}>
-        <h2>CREAR SPRINT</h2>
-        <div className={styles.containerInputs}>
-            <input type="text" placeholder="Nombre sprint" onChange={handleChange}
-            name="nombre" value={formValues.nombre}></input>
-
-            <input type="date" placeholder="Fecha inicio" onChange={handleChange}
-            name="fechaInicio" value={formValues.fechaInicio}></input>
-            
-            <input type="date" placeholder="Fecha fin" onChange={handleChange}
-            name="fechaCierre" value={formValues.fechaCierre}></input>
-        </div>
-
-        <div className={styles.containerButtons}>
-            <button className={styles.buttonCancelar} onClick={handleCancelSubmit}>CANCELAR</button>
-            <button className={styles.buttonSubmit} onClick={handleSubmit}>ENVIAR</button>
-        </div>
-    </form>
-    </>
-  )
+    return ReactDOM.createPortal(
+        <div className={styles.modalBackdrop}>
+          <div className={styles.modalContainer}>
+            <h2>CREAR SPRINT</h2>
+            <div className={styles.containerInputs}>
+              <input type="text" placeholder="Nombre sprint" onChange={handleChange}
+                name="nombre" value={formValues.nombre}></input>
+      
+              <input type="date" placeholder="Fecha inicio" onChange={handleChange}
+                name="fechaInicio" value={formValues.fechaInicio}></input>
+      
+              <input type="date" placeholder="Fecha fin" onChange={handleChange}
+                name="fechaCierre" value={formValues.fechaCierre}></input>
+            </div>
+      
+            <div className={styles.containerButtons}>
+              <button className={styles.buttonCancelar} onClick={handleCancelSubmit}>CANCELAR</button>
+              <button className={styles.buttonSubmit} onClick={handleSubmit}>ENVIAR</button>
+            </div>
+          </div>
+        </div>,
+        document.getElementById("modal-root")!
+      );
 }

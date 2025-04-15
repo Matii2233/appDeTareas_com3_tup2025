@@ -3,16 +3,20 @@ import styles from "./ModalCrearTarea.module.css"
 import { ITarea } from "../../../../../types/TypesBacklog/ITarea"
 import { tareaStore } from "../../../../../store/tareaStore"
 import { useTareas } from "../../../../../hooks/useTareas"
+import ReactDOM from "react-dom"
+import { ISprint } from "../../../../../types/TypesSprints/ISprint"
+import { useSprints } from "../../../../../hooks/useSprints"
 
 type IModalCrearTarea = {
     handleCloseModalCrearTarea: VoidFunction
+    sprintActivo?: ISprint | null
 }
 const initialState:ITarea = {
     titulo:"",
     descripcion:"",
     fechaLimite:""
 }
-export const ModalCrearTarea: FC<IModalCrearTarea> = ({handleCloseModalCrearTarea}) => {
+export const ModalCrearTarea: FC<IModalCrearTarea> = ({handleCloseModalCrearTarea, sprintActivo}) => {
     const tareaActiva = tareaStore((state)=>state.tareaActiva)
 
     const setTareaActiva = tareaStore((state)=> state.setTareaActiva)
@@ -20,6 +24,8 @@ export const ModalCrearTarea: FC<IModalCrearTarea> = ({handleCloseModalCrearTare
     const {crearTarea, putTareaEditar} = useTareas()
 
     const [formValues, setFormValues] = useState<ITarea>(initialState)
+
+    const {putSprint} = useSprints()
 
     useEffect(()=>{
         if(tareaActiva) setFormValues(tareaActiva)   
@@ -32,22 +38,36 @@ export const ModalCrearTarea: FC<IModalCrearTarea> = ({handleCloseModalCrearTare
 
     const handleSubmit = (e:FormEvent)=> {
         e.preventDefault()
-        if(tareaActiva){
-            putTareaEditar(formValues)
-        } else{
-            const sinDatos = {...formValues,id: crypto.randomUUID(), estado: formValues.estado ?? "pendiente"}
-            crearTarea(sinDatos)
 
+        if (sprintActivo) {
+            const sinDatos = {...formValues,id: crypto.randomUUID(), estado: formValues.estado ?? "Pendiente"}
+
+            const sprintActualizado: ISprint = {
+                ...sprintActivo,
+                tareas: [...sprintActivo.tareas, sinDatos]
+            }
+
+            putSprint(sprintActualizado)
+
+        } else {
+            if(tareaActiva){
+                putTareaEditar(formValues)
+            } else {
+                const sinDatos = {...formValues,id: crypto.randomUUID(), estado: formValues.estado ?? "Pendiente"}
+                crearTarea(sinDatos)
+            }
         }
-        handleCloseModalCrearTarea();
-        setTareaActiva(null);
         
+        handleCloseModalCrearTarea();
+        setTareaActiva(null); 
     }
+
     const handleCloseSubmit = () => {
         handleCloseModalCrearTarea()
         setTareaActiva(null)
     }
-    return (
+
+    return ReactDOM.createPortal(
         <div className={styles.containerModalCrearTarea}>
             <div className={styles.containerPopUp}>
                 <div>
@@ -69,6 +89,7 @@ export const ModalCrearTarea: FC<IModalCrearTarea> = ({handleCloseModalCrearTare
                     </div>
                 </form>
             </div>
-        </div>
+        </div>,
+        document.getElementById("modal-root")!
     )
 }

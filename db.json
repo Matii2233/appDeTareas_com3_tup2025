@@ -13,42 +13,28 @@
         "descripcion": "Hay que pasear al perro",
         "fechaLimite": "3546-02-25",
         "id": "5d5d8d78-193a-4355-b22e-31988c6c51aa",
-        "estado": "pendiente"
+        "estado": "Pendiente"
       },
       {
         "titulo": "Caminar 20 minutos",
         "descripcion": "Hay que caminar",
         "fechaLimite": "2022-02-20",
         "id": "f72684bf-dd8e-4239-9a24-cb5da5b7a1f4",
-        "estado": "pendiente"
+        "estado": "Pendiente"
       },
       {
         "titulo": "Comer una hamburguesita",
         "descripcion": "Comer una hamburguesita",
         "fechaLimite": "5521-06-06",
         "id": "f3d12fa3-88fb-4252-9e62-510a05a32c85",
-        "estado": "pendiente"
+        "estado": "Pendiente"
       },
       {
         "titulo": "Bailar",
         "descripcion": "Bailar mucho",
         "fechaLimite": "2025-03-25",
         "id": "c044907f-e35f-44c1-8f8b-c912c387c996",
-        "estado": "pendiente"
-      },
-      {
-        "titulo": "Descansar del trabajo",
-        "descripcion": "Trabaje mucho",
-        "fechaLimite": "2021-02-25",
-        "id": "8e885a14-353e-450d-a5f3-580881564d94",
-        "estado": "pendiente"
-      },
-      {
-        "titulo": "Estoy probando tareas(editado)",
-        "descripcion": "Es una tarea",
-        "fechaLimite": "59554-05-25",
-        "id": "a3168cd3-9d43-4e0c-90f5-144ebc004a16",
-        "estado": "pendiente"
+        "estado": "Pendiente"
       }
     ]
   },
@@ -58,8 +44,23 @@
         "id": "b0e3f34b-68c6-49eb-b059-ab251ed81629",
         "fechaInicio": "2025-03-04",
         "fechaCierre": "2025-03-11",
-        "nombre": "Sprint 122",
-        "tareas": []
+        "nombre": "Sprint 123",
+        "tareas": [
+          {
+            "titulo": "tarea en el sprint 123",
+            "descripcion": "dasdas",
+            "fechaLimite": "1313-03-12",
+            "id": "937b0096-7c16-45a1-aff2-f47d72586d9c",
+            "estado": "Pendiente"
+          }
+        ]
+      },
+      {
+        "nombre": "sprint de prueba",
+        "fechaInicio": "2222-02-22",
+        "fechaCierre": "3233-02-23",
+        "tareas": [],
+        "id": "65886893-aa17-45be-a610-9dcd5d72a3a4"
       }
     ]
   }

@@ -14,14 +14,18 @@ interface ITareaStore {
 export const tareaStore = create <ITareaStore>((set) => ({
     tareas: [],
     tareaActiva: null,
-    setTareaActiva:(tareaActivaIn) => set(()=>({tareaActiva:tareaActivaIn})),
-    agregarNuevaTarea:(nuevaTarea) => set((state)=>({tareas: [...state.tareas, nuevaTarea]})),
+    
+    setTareaActiva:(tareaActivaIn) => {set(()=>({tareaActiva:tareaActivaIn}))},
+
+    agregarNuevaTarea:(nuevaTarea) => {set((state)=>({tareas: [...state.tareas, nuevaTarea]}))},
+
     editarUnaTarea:(tareaEditada) => set((state)=>{
         const arregloTareas = state.tareas.map((tarea)=>
             tarea.id === tareaEditada.id ? {... tarea, ...tareaEditada}:tarea
     )
         return {tareas: arregloTareas}
     }),
+
     eliminarUnaTarea:(idTarea) => 
         set((state)=>{
         const arregloTareas = state.tareas.filter(
@@ -29,5 +33,6 @@ export const tareaStore = create <ITareaStore>((set) => ({
     )
     return {tareas: arregloTareas}   
     }),
-    setArrayTareas:(arrayDeTareas) => set(()=> ({tareas:arrayDeTareas})),
+
+    setArrayTareas:(arrayDeTareas) => {set(()=> ({tareas:arrayDeTareas}))},
 }))

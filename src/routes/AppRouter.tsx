@@ -1,13 +1,18 @@
-import { Navigate, Route, Router, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { MainScreen } from '../components/screens/MainScreen/MainScreen'
 import { Backlog } from '../components/screens/Backlog/Backlog'
+import { Sprints } from '../components/screens/Sprints/Sprints'
 
 
 export const AppRoutes = () => {
   return (
-    <></>
-    // <Routes>
-    //   <Route path="/backlog" element={<Backlog/>}/>
-    // </Routes>
+    <>
+    <MainScreen/>
+    <Routes>
+      <Route path='/' element={<Backlog/>}/>
+      <Route path='/sprint' element={<Sprints/>}/>
+      <Route path='/backlog' element={<Backlog/>}/>
+    </Routes>
+    </>
   )
 }
