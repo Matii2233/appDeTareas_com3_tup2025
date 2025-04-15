@@ -45,21 +45,21 @@
         "fechaInicio": "2025-03-04",
         "fechaCierre": "2025-03-11",
         "nombre": "Sprint 123",
-        "tareas": [
-          {
-            "titulo": "tarea en el sprint 123",
-            "descripcion": "dasdas",
-            "fechaLimite": "1313-03-12",
-            "id": "937b0096-7c16-45a1-aff2-f47d72586d9c",
-            "estado": "Pendiente"
-          }
-        ]
+        "tareas": []
       },
       {
         "nombre": "sprint de prueba",
         "fechaInicio": "2222-02-22",
         "fechaCierre": "3233-02-23",
-        "tareas": [],
+        "tareas": [
+          {
+            "titulo": "Tarea 1",
+            "descripcion": "tarea desde sprint de prueba",
+            "fechaLimite": "3111-03-23",
+            "id": "4eb079b7-78f6-45db-9009-afea704d5719",
+            "estado": "Pendiente"
+          }
+        ],
         "id": "65886893-aa17-45be-a610-9dcd5d72a3a4"
       }
     ]

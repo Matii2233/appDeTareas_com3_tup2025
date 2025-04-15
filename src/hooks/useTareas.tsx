@@ -8,8 +8,11 @@ import { sprintStore } from "../store/sprintStore"
 
 export const useTareas = () => {
 
-    const {sprints, agregarNuevoSprint} = sprintStore(useShallow((state)=>({
-        sprints: state.sprints, agregarNuevoSprint: state.agregarNuevoSprint
+    const {sprints, agregarNuevoSprint, sprintActivo, setSprintActivo} = sprintStore(useShallow((state)=>({
+        sprints: state.sprints,
+        agregarNuevoSprint: state.agregarNuevoSprint,
+        sprintActivo:state.sprintActivo,
+        setSprintActivo:state.setSprintActivo
     })))
 
     const {tareas, setArrayTareas, agregarNuevaTarea, eliminarUnaTarea, editarUnaTarea} = tareaStore(useShallow((state)=>({
@@ -84,6 +87,10 @@ export const useTareas = () => {
         
         try {
             await eliminarTareaSprintController(idTarea, idSprint)
+            if (sprintActivo?.id === idSprint) {
+                const tareasActualizadas = sprintActivo.tareas.filter(t => t.id !== idTarea);
+                setSprintActivo({ ...sprintActivo, tareas: tareasActualizadas });
+            }
             Swal.fire("Eliminado","La tarea se elimino correctamente","success")
         } catch (error) {
             if (estadoPrevio) agregarNuevoSprint(estadoPrevio)

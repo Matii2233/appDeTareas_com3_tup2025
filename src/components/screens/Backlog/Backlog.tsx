@@ -65,17 +65,17 @@ export const Backlog = () => {
         ...sprintActivo,
         tareas: [...sprintActivo.tareas, tareaActiva]
       }
-      putSprint(sprintActualizado)
+      console.log("tareaActiva desde el backlog: ", tareaActiva)
+      await putSprint(sprintActualizado)
+      
     } else {
       console.log("Hay un error en la tarea que desea enviar", tareaActiva)
     }
 
+    await deleteTarea(tareaActiva?.id!)
     await setTareaActiva(null)
-    await setSprintActivo(null)
     await setIsOpenEnviarTarea(false)
   }
-
-  console.log("sprint activo desde backlog: ", sprintActivo)
   
   return (
     <>

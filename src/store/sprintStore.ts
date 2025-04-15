@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { ISprint } from "../types/TypesSprints/ISprint";
-import { persist } from "zustand/middleware";
 
 interface ISprintStore {
     sprints: ISprint[],

@@ -14,6 +14,8 @@ export const ModalEnviarTarea: FC<IPropsModalEnviarTarea> = ({ closeModal, envia
 
     const setSprintActivo = sprintStore((state) => state.setSprintActivo)
 
+    const sprintActivo = sprintStore((state) => state.sprintActivo)
+
     useEffect(() => {
         getSprints()
     }, [])
@@ -25,7 +27,8 @@ export const ModalEnviarTarea: FC<IPropsModalEnviarTarea> = ({ closeModal, envia
                 <h3>Selecciona el sprint</h3>
 
                 <div className={styles.sprintsContainer}>
-                    {sprints.map((sprint) => <p onClick={() => setSprintActivo(sprint)}>{sprint.nombre}</p>)}
+                    {sprints.map((sprint) =>
+                    <p onClick={() => setSprintActivo(sprint)} style={sprintActivo===sprint ? {backgroundColor:"#3b67a3", borderRadius:"10px"} : {}}>{sprint.nombre}</p>)}
                 </div>
 
                 <div className={styles.buttons}>

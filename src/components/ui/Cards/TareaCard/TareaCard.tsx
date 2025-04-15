@@ -20,6 +20,8 @@ export const TareaCard: FC<ITareaCard> = ({ tarea }) => {
 
     const { deleteTareaSprint, putTareaSprintEditar, crearTarea } = useTareas()
 
+    const setSprintActivo = sprintStore((state) => state.setSprintActivo)
+
     const sprintActivo = sprintStore((state) => state.sprintActivo)
 
     const tareas = tareaStore((state) => state.tareas)
@@ -62,6 +64,10 @@ export const TareaCard: FC<ITareaCard> = ({ tarea }) => {
                 console.log("Algo no salio bien al eliminar la tarea del sprint en 'handleEnviarTareaAlBacklog'")
             }
         }
+
+        const tareasActualizadas = sprintActivo?.tareas.filter(t => t.id !== tarea.id)
+        const sprintEditado = { ...sprintActivo, tareas: tareasActualizadas }
+        await setSprintActivo(sprintEditado as ISprint)
     }
 
     const handleUpdateEstadoTarea = () => {
@@ -73,7 +79,7 @@ export const TareaCard: FC<ITareaCard> = ({ tarea }) => {
             )
             const sprintEditado = { ...sprintActivo, tareas: tareasActualizadas }
             putTareaSprintEditar(tareaEditada, sprintEditado as ISprint)
-
+            setSprintActivo(sprintEditado as ISprint)
         }
         
         if (tarea.estado === "En proceso") {
@@ -83,6 +89,7 @@ export const TareaCard: FC<ITareaCard> = ({ tarea }) => {
             )
             const sprintEditado = { ...sprintActivo, tareas: tareasActualizadas }
             putTareaSprintEditar(tareaEditada, sprintEditado as ISprint)
+            setSprintActivo(sprintEditado as ISprint)
         }
 
         if (tarea.estado === "Completado") {
@@ -92,6 +99,7 @@ export const TareaCard: FC<ITareaCard> = ({ tarea }) => {
             )
             const sprintEditado = { ...sprintActivo, tareas: tareasActualizadas }
             putTareaSprintEditar(tareaEditada, sprintEditado as ISprint)
+            setSprintActivo(sprintEditado as ISprint)
         }
     }
 
@@ -117,7 +125,7 @@ export const TareaCard: FC<ITareaCard> = ({ tarea }) => {
             </div>
 
             {isOpenVerTarea && <ModalVerTarea tarea={tarea} setOpenModalVerTarea={setIsOpenVerTarea}/>}
-            {isOpenEditTarea && <ModalCrearTarea handleCloseModalCrearTarea={handleCloseEditTarea}/>}
+            {isOpenEditTarea && <ModalCrearTarea handleCloseModalCrearTarea={handleCloseEditTarea} tareaActiva={tarea}/>}
         </>
     )
 }

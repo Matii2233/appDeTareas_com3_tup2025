@@ -6,20 +6,23 @@ import { useTareas } from "../../../../../hooks/useTareas"
 import ReactDOM from "react-dom"
 import { ISprint } from "../../../../../types/TypesSprints/ISprint"
 import { useSprints } from "../../../../../hooks/useSprints"
+import { sprintStore } from "../../../../../store/sprintStore"
 
 type IModalCrearTarea = {
     handleCloseModalCrearTarea: VoidFunction
-    sprintActivo?: ISprint | null
+    tareaActiva?: ITarea
 }
 const initialState:ITarea = {
     titulo:"",
     descripcion:"",
     fechaLimite:""
 }
-export const ModalCrearTarea: FC<IModalCrearTarea> = ({handleCloseModalCrearTarea, sprintActivo}) => {
-    const tareaActiva = tareaStore((state)=>state.tareaActiva)
-
+export const ModalCrearTarea: FC<IModalCrearTarea> = ({handleCloseModalCrearTarea, tareaActiva}) => {
     const setTareaActiva = tareaStore((state)=> state.setTareaActiva)
+
+    const setSprintActivo = sprintStore((state) => state.setSprintActivo)
+
+    const sprintActivo = sprintStore((state) => state.sprintActivo)
 
     const {crearTarea, putTareaEditar} = useTareas()
 
@@ -40,15 +43,31 @@ export const ModalCrearTarea: FC<IModalCrearTarea> = ({handleCloseModalCrearTare
         e.preventDefault()
 
         if (sprintActivo) {
-            const sinDatos = {...formValues,id: crypto.randomUUID(), estado: formValues.estado ?? "Pendiente"}
+            if (tareaActiva) {                
+                const tareasActualizadas = sprintActivo.tareas.map(tarea =>
+                    tarea.id === tareaActiva.id ? { ...formValues, id: tarea.id } : tareaActiva
+                )
 
-            const sprintActualizado: ISprint = {
-                ...sprintActivo,
-                tareas: [...sprintActivo.tareas, sinDatos]
+                console.log("tareas actualizadas, desde el modal crear tarea: ", tareasActualizadas)
+        
+                const sprintActualizado: ISprint = {
+                    ...sprintActivo,
+                    tareas: tareasActualizadas
+                }
+        
+                putSprint(sprintActualizado)
+                setSprintActivo(sprintActualizado)
+            } else {
+                const sinDatos = { ...formValues, id: crypto.randomUUID(), estado: formValues.estado ?? "Pendiente" }
+
+                const sprintActualizado: ISprint = {
+                    ...sprintActivo,
+                    tareas: [...sprintActivo.tareas, sinDatos]
+                }
+
+                putSprint(sprintActualizado)
+                setSprintActivo(sprintActualizado)
             }
-
-            putSprint(sprintActualizado)
-
         } else {
             if(tareaActiva){
                 putTareaEditar(formValues)
@@ -66,6 +85,9 @@ export const ModalCrearTarea: FC<IModalCrearTarea> = ({handleCloseModalCrearTare
         handleCloseModalCrearTarea()
         setTareaActiva(null)
     }
+
+    console.log("tarea activa desde el mdoal crear tarea: ", tareaActiva)
+    console.log("sprint activo desde el mdoal crear tarea: ", sprintActivo)
 
     return ReactDOM.createPortal(
         <div className={styles.containerModalCrearTarea}>

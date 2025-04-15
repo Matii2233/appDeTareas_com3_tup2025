@@ -18,6 +18,8 @@ export const Sprints = () => {
     const handleCloseModalCrearTarea = () => {
         setIsOpenCrearTarea(false)
     }
+
+    console.log("sprint activo desde sprints: ", sprintActivo)
     
   return (
     <>
@@ -76,7 +78,7 @@ export const Sprints = () => {
             </div>
         </div>
 
-        {isOpenCrearTarea && <ModalCrearTarea handleCloseModalCrearTarea={handleCloseModalCrearTarea} sprintActivo={sprintActivo}/>}
+        {isOpenCrearTarea && <ModalCrearTarea handleCloseModalCrearTarea={handleCloseModalCrearTarea}/>}
     </>
   )
 }
