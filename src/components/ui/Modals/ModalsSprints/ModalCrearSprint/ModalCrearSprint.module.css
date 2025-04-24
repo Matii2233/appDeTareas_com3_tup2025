@@ -1,0 +1,119 @@
+.containerModalCrearSprint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: brightness(90%) blur(2px);
+}
+
+.containerPopUp{
+    background-color: #27446E;
+    width: 30vw;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    color: white;
+    z-index: 1;
+    box-shadow: 0px 9px 12px rgb(54, 54, 54);
+    transition: 0.5s;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-around;
+}
+.containerPopUp:hover{
+    transform: translateY(-7px);
+    box-shadow: 0px 12px 12px rgb(34, 34, 34);
+}
+.containerPopUp h3 {
+    font-size: 23px;
+}
+
+.containerForm{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 2rem;
+}
+.containerForm label {
+    font-size: small;
+    font-weight: 300;
+    position: relative;
+    right: 13%;
+}
+.fillAreaContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.fillArea {
+    width: 60%;
+    padding: 0.3rem;
+    resize: none;
+    outline: none;
+    border: none;
+    background-color: rgb(171, 192, 214);
+    border-radius: 5px;
+    color: rgb(49, 49, 49);
+    font-weight: 600;
+}
+
+
+.containerButtons{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    
+}
+.containerButtons button{
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: transparent;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    background: rgb(101, 119, 138);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.buttonCancelar:hover {
+    background: linear-gradient(90deg, rgb(240, 4, 4) 0%, rgb(246, 77, 77) 100%);
+    transform: translateY(-7px);
+    box-shadow: 0px 8px 7px rgb(29, 29, 29);
+}
+
+.containerButtons button:active{
+    transform: translate(0em, 0.2em);
+}
+
+.buttonSubmit {
+    width: 38%;
+}
+.buttonSubmit:hover{
+    background: linear-gradient(90deg, rgba(30,144,255,1) 0%, rgba(0,212,255,1) 100%);
+    transform: translateY(-7px);
+    box-shadow: 0px 8px 7px rgb(29, 29, 29);
+}
+
+.buttonSubmit:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+    
+}
+.buttonSubmit:disabled:hover {
+    background: none;
+    transform: none;
+    box-shadow: none;
+    
+}

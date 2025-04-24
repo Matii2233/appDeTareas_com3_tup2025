@@ -1,0 +1,67 @@
+{
+  "backlog": {
+    "tareas": []
+  },
+  "sprintList": {
+    "sprints": [
+      {
+        "id": "b0e3f34b-68c6-49eb-b059-ab251ed81629",
+        "fechaInicio": "2025-06-04",
+        "fechaCierre": "2025-06-11",
+        "nombre": "Sprint Editado 2",
+        "tareas": [
+          {
+            "titulo": "Correr una maraton",
+            "descripcion": "Hay que correr",
+            "fechaLimite": "2025-06-25",
+            "estado": "Completado",
+            "id": "958ef15a-bd8c-481f-bb61-91b215d03d78"
+          },
+          {
+            "titulo": "Tarea de prueba editada",
+            "descripcion": "Es una tarea editada",
+            "fechaLimite": "2026-03-25",
+            "id": "e959c9d2-c43e-4478-919b-fdef199d263c",
+            "estado": "En proceso"
+          }
+        ]
+      },
+      {
+        "nombre": "sprint de prueba",
+        "fechaInicio": "2222-02-22",
+        "fechaCierre": "3233-02-23",
+        "tareas": [
+          {
+            "titulo": "Saltar la soga",
+            "descripcion": "Hay que saltar la soga",
+            "fechaLimite": "2026-06-25",
+            "id": "68e786a5-a2c4-45ef-a027-520dc3bf5700",
+            "estado": "Completado"
+          },
+          {
+            "titulo": "Tarea de prueba",
+            "descripcion": "Es una tarea de prueba ",
+            "fechaLimite": "2026-07-25",
+            "estado": "Pendiente",
+            "id": "0a49e45b-12de-41b5-9d89-605ebf3a8ae3"
+          },
+          {
+            "titulo": "Tarea",
+            "descripcion": "es una tarea",
+            "fechaLimite": "2026-06-25",
+            "id": "55162c91-de41-411e-a01c-1238b7eba54f",
+            "estado": "Pendiente"
+          },
+          {
+            "titulo": "Comer",
+            "descripcion": "Hay que comer",
+            "fechaLimite": "2026-02-26",
+            "id": "10fa975b-59a2-4469-9b9b-8b6ec4d1fa9b",
+            "estado": "Pendiente"
+          }
+        ],
+        "id": "65886893-aa17-45be-a610-9dcd5d72a3a4"
+      }
+    ]
+  }
+}
